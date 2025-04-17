@@ -1,15 +1,14 @@
 from window import Window
 from point import Point
 from line import Line
+from cell import Cell
 
 
 def main():
     win = Window(800, 600)
 
-    point1 = Point(100, 100)
-    point2 = Point(300, 300)
-    line1 = Line(point1, point2)
-    win.draw_line(line1, "red")
+    cell1 = Cell(100,100, 200,200, win)
+    cell1.draw()
 
     win.wait_for_close()
     
