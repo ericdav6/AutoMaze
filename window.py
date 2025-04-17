@@ -12,7 +12,7 @@ class Window():
         self.canvas = Canvas(self.root, height=self.height, width=self.width, bg="white")
         
         self.window_running = False
-        self.root.protocol("WM_DELETE_WINDOW", self.close())
+        self.root.protocol("WM_DELETE_WINDOW", self.close)
         self.canvas.pack()
 
 

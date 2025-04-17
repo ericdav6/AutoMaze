@@ -49,3 +49,25 @@ class Cell():
             line = Line(point1, point2)
 
             self.win.draw_line(line, fill_color)
+        
+    def draw_move(self, to_cell, undo=False):
+        center1X = (self.x1 + self.x2) / 2
+        center1Y = (self.y1 + self.y2) / 2
+
+        center2X = (to_cell.x1 + to_cell.x2) / 2
+        center2Y = (to_cell.y1 + to_cell.y2) / 2
+
+        center1 = Point(center1X, center1Y)
+        center2 = Point(center2X, center2Y)
+
+        line = Line(center1, center2)
+
+        if undo == False:
+            fill_color = "red"
+        else:
+            fill_color = "gray"
+        
+        self.win.draw_line(line, fill_color)
+        
+        
+
