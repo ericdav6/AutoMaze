@@ -2,6 +2,7 @@ from window import Window
 from line import Line
 from point import Point
 
+
 class Cell():
     def __init__(self, x1, y1, x2, y2, window):
         self.win = window
@@ -31,7 +32,7 @@ class Cell():
 
     def draw(self):
         if self.has_left_wall:
-            fill_color = "red"
+            fill_color = "black"
         else:
             fill_color = "white"
         point1 = Point(self.x1, self.y1)
@@ -41,7 +42,7 @@ class Cell():
 
 
         if self.has_right_wall:
-            fill_color = "red"
+            fill_color = "black"
         else:
             fill_color = "white"
         point1 = Point(self.x2, self.y1)
@@ -50,7 +51,7 @@ class Cell():
         self.win.draw_line(line, fill_color)
 
         if self.has_top_wall:
-            fill_color = "red"
+            fill_color = "black"
         else:
             fill_color = "white"
         point1 = Point(self.x1, self.y1)
@@ -59,7 +60,7 @@ class Cell():
         self.win.draw_line(line, fill_color)
 
         if self.has_bottom_wall == True:
-            fill_color = "red"
+            fill_color = "black"
         else:
             fill_color = "white"
         point1 = Point(self.x1, self.y2)
@@ -77,12 +78,15 @@ class Cell():
         center1 = Point(center1X, center1Y)
         center2 = Point(center2X, center2Y)
 
-        line = Line(center1, center2)
-
         if undo == False:
             fill_color = "red"
         else:
             fill_color = "gray"
+
+
+        line = Line(center1, center2)
+        self.win.draw_line(line, fill_color)
+
         
 
 

@@ -21,6 +21,7 @@ class Maze():
         self.break_entance_exit()
         self.break_walls_f(0,0)
         self.reset_visited()
+        print(self.solve())
         
    
     def reset_visited(self):
@@ -54,7 +55,7 @@ class Maze():
 
     def animate(self):
         self.win.redraw()
-        time.sleep(0.005)
+        time.sleep(0.02)
 
         
 
@@ -67,6 +68,42 @@ class Maze():
         self.cells[self.num_cols-1][self.num_rows-1].has_bottom_wall = False
         self.cells[self.num_cols-1][self.num_rows-1].draw()
 
+    def solve(self):
+        return(self.solve_r(0,0))
+    
+    def solve_r(self, i, j):
+        self.animate()
+        self.cells[i][j].visited = True
+
+        if i == self.num_cols-1 and j == self.num_rows-1:
+            return True
+        else:
+            if i > 0 and self.cells[i-1][j].visited == False and self.cells[i][j].has_left_wall == False:
+                self.cells[i][j].draw_move(self.cells[i-1][j])
+                if self.solve_r(i-1, j):
+                    return True
+                self.cells[i][j].draw_move(self.cells[i-1][j], True)
+
+            if i < self.num_cols-1 and self.cells[i+1][j].visited == False and self.cells[i][j].has_right_wall == False:
+                self.cells[i][j].draw_move(self.cells[i+1][j])
+                if self.solve_r(i+1, j):
+                    return True
+                self.cells[i][j].draw_move(self.cells[i+1][j], True)
+
+            if j > 0 and self.cells[i][j-1].visited == False and self.cells[i][j].has_top_wall == False:
+                self.cells[i][j].draw_move(self.cells[i][j-1])
+                if self.solve_r(i, j-1):
+                    return True
+                self.cells[i][j].draw_move(self.cells[i][j-1], True)
+
+            if j < self.num_rows-1 and self.cells[i][j+1].visited == False and self.cells[i][j].has_bottom_wall == False:
+                self.cells[i][j].draw_move(self.cells[i][j+1])
+                if self.solve_r(i, j+1):
+                    return True
+                self.cells[i][j].draw_move(self.cells[i][j+1], True)
+                
+            return False
+        
     def break_walls_f(self, i, j):
         self.cells[i][j].visited = True
         while True:
