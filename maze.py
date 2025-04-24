@@ -21,7 +21,7 @@ class Maze():
         self.break_entance_exit()
         self.break_walls_f(0,0)
         self.reset_visited()
-        print(self.solve())
+        self.solve()
         
     def reset_visited(self):
         for i in range(len(self.cells)):

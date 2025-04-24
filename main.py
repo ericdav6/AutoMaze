@@ -6,8 +6,8 @@ from maze import Maze
 
 
 def main():
-    win = Window(800, 800)
-    maze1 = Maze(10, 10, 30, 30, 20, 20,win)
+    win = Window(800, 800)  
+    maze1 = Maze(0, 0, 24, 24, 31, 31,win)
     win.wait_for_close()
     
 main()
