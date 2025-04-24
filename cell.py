@@ -16,39 +16,56 @@ class Cell():
         self.has_top_wall = True
         self.has_bottom_wall = True
 
+        self.visited = False
+
+    def __eq__(self, other):
+        if (self.x1 == other.x1 and self.x2 == other.x2 
+            and self.y1 == other.y1 and self.y2 == other.y2
+            and self.has_bottom_wall == other.has_bottom_wall
+            and self.has_top_wall == other.has_top_wall 
+            and self.has_left_wall == other.has_left_wall
+            and self.has_right_wall == other.has_right_wall
+            and self.visited == other.visited):
+            return True
+        return False
+
     def draw(self):
         if self.has_left_wall:
             fill_color = "red"
-            point1 = Point(self.x1, self.y1)
-            point2 = Point(self.x1, self.y2)
+        else:
+            fill_color = "white"
+        point1 = Point(self.x1, self.y1)
+        point2 = Point(self.x1, self.y2)
+        line = Line(point1, point2)
+        self.win.draw_line(line, fill_color)
 
-            line = Line(point1, point2)
 
-            self.win.draw_line(line, fill_color)
         if self.has_right_wall:
             fill_color = "red"
-            point1 = Point(self.x2, self.y1)
-            point2 = Point(self.x2, self.y2)
+        else:
+            fill_color = "white"
+        point1 = Point(self.x2, self.y1)
+        point2 = Point(self.x2, self.y2)
+        line = Line(point1, point2)
+        self.win.draw_line(line, fill_color)
 
-            line = Line(point1, point2)
-
-            self.win.draw_line(line, fill_color)
         if self.has_top_wall:
             fill_color = "red"
-            point1 = Point(self.x1, self.y1)
-            point2 = Point(self.x2, self.y1)
+        else:
+            fill_color = "white"
+        point1 = Point(self.x1, self.y1)
+        point2 = Point(self.x2, self.y1)
+        line = Line(point1, point2)
+        self.win.draw_line(line, fill_color)
 
-            line = Line(point1, point2)
-
-            self.win.draw_line(line, fill_color)
         if self.has_bottom_wall == True:
             fill_color = "red"
-            point1 = Point(self.x1, self.y2)
-            point2 = Point(self.x2, self.y2)
-
-            line = Line(point1, point2)
-
-            self.win.draw_line(line, fill_color)
+        else:
+            fill_color = "white"
+        point1 = Point(self.x1, self.y2)
+        point2 = Point(self.x2, self.y2)
+        line = Line(point1, point2)
+        self.win.draw_line(line, fill_color)
         
     def draw_move(self, to_cell, undo=False):
         center1X = (self.x1 + self.x2) / 2
@@ -67,7 +84,8 @@ class Cell():
         else:
             fill_color = "gray"
         
-        self.win.draw_line(line, fill_color)
+
+
         
         
 
