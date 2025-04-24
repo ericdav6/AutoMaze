@@ -54,6 +54,8 @@ class Maze():
 
     def animate(self):
         self.win.redraw()
+        time.sleep(0.005)
+
         
 
     def break_entance_exit(self):
@@ -80,6 +82,7 @@ class Maze():
                 to_visit.append((i, j-1))
             if len(to_visit) == 0:
                 self.cells[i][j].draw()
+                self.animate()
                 return
             
             
@@ -91,21 +94,25 @@ class Maze():
                 self.cells[i][j].has_right_wall = False
                 self.cells[i+1][j].has_left_wall = False
                 self.cells[i][j].draw()
+                self.animate()
 
             if choice[1] == j+1:
                 self.cells[i][j].has_bottom_wall = False
                 self.cells[i][j+1].has_top_wall = False
                 self.cells[i][j].draw()
+                self.animate()
 
             if choice[0] == i-1:
                 self.cells[i][j].has_left_wall = False
                 self.cells[i-1][j].has_right_wall = False
                 self.cells[i][j].draw()
+                self.animate()
 
             if choice[1] == j-1:
                 self.cells[i][j].has_top_wall = False
                 self.cells[i][j-1].has_bottom_wall = False
                 self.cells[i][j].draw()
+                self.animate()
 
             
             self.break_walls_f(choice[0], choice[1])
