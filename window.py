@@ -1,6 +1,5 @@
 from tkinter import Tk, BOTH, Canvas
 
-
 class Window():
     def __init__(self, width, height):                 
         self.width = width
@@ -14,8 +13,6 @@ class Window():
         self.window_running = False
         self.root.protocol("WM_DELETE_WINDOW", self.close)
         self.canvas.pack()
-
-
 
     def redraw(self):
         self.root.update()

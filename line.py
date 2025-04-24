@@ -7,7 +7,6 @@ class Line():
         self.point1 = point1
         self.point2 = point2
 
-
     def draw(self, canvas, fill_color):
         
         x1 = self.point1.x
