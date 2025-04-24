@@ -20,12 +20,14 @@ class Maze():
 
         self.break_entance_exit()
         self.break_walls_f(0,0)
+        self.reset_visited()
         
-
    
-
+    def reset_visited(self):
+        for i in range(len(self.cells)):
+            for j in range(self.num_rows):
+                self.cells[i][j].visited = False
     
-
 
     def create_cells(self):
         self.cells = [[] for i in range(self.num_cols)]
