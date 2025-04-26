@@ -1,6 +1,7 @@
 from window import Window
 from line import Line
 from point import Point
+from line_dashed import Line_Dashed
 
 
 class Cell():
@@ -84,7 +85,7 @@ class Cell():
             fill_color = "gray"
 
 
-        line = Line(center1, center2)
+        line = Line_Dashed(center1, center2)
         self.win.draw_line(line, fill_color)
 
         
